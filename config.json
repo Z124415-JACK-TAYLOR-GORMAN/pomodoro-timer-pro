@@ -1,0 +1,25 @@
+{
+    "work_time": 60,
+    "break_time": 60,
+    "work_playlist": [
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/1Linear Algebra - Math for Machine Learning.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/2Math4ML Exercises\uff1a Getting Started & Linear Algebra.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/3Math4ML Exercises\uff1a Linear Algebra",
+        "cont'd.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/4Calculus - Math for Machine Learning.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/5Math4ML Exercises\uff1a Calculus.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/6Probability - Math for Machine Learning.mp4",
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/7Math4ML Exercises\uff1a Probability.mp4"
+    ],
+    "break_playlist": [
+        "https://www.youtube.com/watch?v=btw1RK7daPI"
+    ],
+    "work_media_pos": {
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/1Linear Algebra - Math for Machine Learning.mp4": 60900
+    },
+    "break_media_pos": {},
+    "volume": 54,
+    "always_on_top": true,
+    "main_window_geometry": "AdnQywADAAAAAAABAAAAIAAAAsMAAAUbAAAAAQAAAEUAAALDAAAFGwAAAAAAAAAAB4AAAAABAAAARQAAAsMAAAUb",
+    "video_window_geometry": "AdnQywADAAAAAALNAAAARQAABKwAAAFSAAACzQAAAEUAAASsAAABUgAAAAAAAAAAB4AAAALNAAAARQAABKwAAAFS"
+}

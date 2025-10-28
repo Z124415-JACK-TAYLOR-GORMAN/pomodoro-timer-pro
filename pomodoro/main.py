@@ -19,7 +19,6 @@ This project is automatically managed by an AI Agent that handles:
 
 Created: October 2025
 Auto-managed by: AI Agent Development Environment
-Repository: https://github.com/Z124415-JACK-TAYLOR-GORMAN/pomodoro-timer-pro
 """
 
 import sys
@@ -122,7 +121,14 @@ class Downloader(QObject):
                 'outtmpl': os.path.join(folder, '%(title)s.%(ext)s'),
                 'progress_hooks': [self.progress_hook],
                 'verbose': True,
+                'retries': 3,
+                'socket_timeout': 20,
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+                },
+                'cookies-from-browser': ('brave',),
             }
+
             if self.audio_only:
                 ydl_opts['postprocessors'] = [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3'}]
 
@@ -131,8 +137,16 @@ class Downloader(QObject):
                 filename = ydl.prepare_filename(info)
                 title = info.get('title', os.path.basename(filename))
                 self.finished.emit(filename, title, self.url)
+        except yt_dlp.utils.DownloadError as e:
+            if "HTTP Error 403" in str(e):
+                print("\n[DOWNLOAD ERROR] Received HTTP 403: Forbidden. This may be due to YouTube blocking the request.")
+                print("To fix this, you can provide a 'cookies.txt' file from your browser in the project root directory.")
+                print("For more info on how to do this, search for a browser extension called 'Get cookies.txt' or similar.\n")
+            else:
+                print(f"Error downloading youtube video: {e}")
+            self.finished.emit(None, None, self.url)
         except Exception as e:
-            print(f"Error downloading youtube video: {e}")
+            print(f"An unexpected error occurred during download: {e}")
             self.finished.emit(None, None, self.url)
 
     def progress_hook(self, d):
@@ -298,6 +312,8 @@ class PomodoroTimer(QMainWindow):
         self.skip_forward_button.setObjectName("TransportButton")
         media_control_layout.addWidget(self.skip_back_button)
         media_control_layout.addWidget(self.skip_forward_button)
+        self.always_on_top_checkbox = QCheckBox("Video Always on Top", self)
+        media_control_layout.addWidget(self.always_on_top_checkbox)
         self.layout.addLayout(media_control_layout)
 
         self.media_label = QLabel("Media:", self)
@@ -310,9 +326,7 @@ class PomodoroTimer(QMainWindow):
 
         media_options_layout = QHBoxLayout()
         self.audio_only_checkbox = QCheckBox("Audio Only", self)
-        self.always_on_top_checkbox = QCheckBox("Video Always on Top", self)
         media_options_layout.addWidget(self.audio_only_checkbox)
-        media_options_layout.addWidget(self.always_on_top_checkbox)
         self.layout.addLayout(media_options_layout)
 
         self.browse_button = QPushButton("Browse Local Files", self)
@@ -361,36 +375,6 @@ class PomodoroTimer(QMainWindow):
 
         self.status_label = QLabel("", self)
         self.layout.addWidget(self.status_label)
-
-        bottom_layout = QHBoxLayout()
-
-        donation_label = QLabel("<a href='https://linktr.ee/Mclunky'>Help Jack Gorman afford univerity with a donation! And find more of my work. I hope I helped!</a>")
-        donation_label.setOpenExternalLinks(True)
-        donation_label.setAlignment(Qt.AlignCenter)
-        bottom_layout.addWidget(donation_label)
-
-        self.image_label = QLabel()
-        image_path = os.path.join(script_dir, 'prof.png')
-        if os.path.exists(image_path):
-            pixmap = QPixmap(image_path)
-            size = 100 # size of the circle
-            rounded = QPixmap(size, size)
-            rounded.fill(Qt.transparent)
-            painter = QPainter(rounded)
-            painter.setRenderHint(QPainter.Antialiasing)
-            path = QPainterPath()
-            path.addEllipse(0, 0, size, size)
-            painter.setClipPath(path)
-            # scale the image to fit the circle
-            scaled_pixmap = pixmap.scaled(size, size, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
-            painter.drawPixmap(0, 0, scaled_pixmap)
-            painter.end()
-            self.image_label.setPixmap(rounded)
-            self.image_label.setAlignment(Qt.AlignCenter)
-
-        bottom_layout.addWidget(self.image_label)
-
-        self.layout.addLayout(bottom_layout)
 
     def set_volume(self, value):
         self.media_player.audio_set_volume(value)

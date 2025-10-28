@@ -101,6 +101,10 @@ coverage.xml
 # pyenv
 .python-version
 
+# Sensitive data
+cookies.txt
+config.json
+
 # celery beat schedule file
 celerybeat-schedule
 

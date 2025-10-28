@@ -1,6 +1,6 @@
 {
-    "work_time": 60,
-    "break_time": 60,
+    "work_time": 1200,
+    "break_time": 300,
     "work_playlist": [
         "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/1Linear Algebra - Math for Machine Learning.mp4",
         "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/2Math4ML Exercises\uff1a Getting Started & Linear Algebra.mp4",
@@ -12,14 +12,15 @@
         "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/7Math4ML Exercises\uff1a Probability.mp4"
     ],
     "break_playlist": [
-        "https://www.youtube.com/watch?v=btw1RK7daPI"
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/video/MADRIC TECHNO \u29f8 EDM \u29f8 TECH HOUSE 2025 \ud83d\udd25 DJ set 1 Hour  \ud83c\udfb6 \u2b55\ufe0f.mp4"
     ],
     "work_media_pos": {
-        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/1Linear Algebra - Math for Machine Learning.mp4": 60900
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/1Linear Algebra - Math for Machine Learning.mp4": 0,
+        "/home/jackgorman/Code/Dev_Environment_Agent/managed-projects/Pomodoro/Media/video/2Math4ML Exercises\uff1a Getting Started & Linear Algebra.mp4": 0
     },
     "break_media_pos": {},
     "volume": 54,
     "always_on_top": true,
-    "main_window_geometry": "AdnQywADAAAAAAABAAAAIAAAAsMAAAUbAAAAAQAAAEUAAALDAAAFGwAAAAAAAAAAB4AAAAABAAAARQAAAsMAAAUb",
-    "video_window_geometry": "AdnQywADAAAAAALNAAAARQAABKwAAAFSAAACzQAAAEUAAASsAAABUgAAAAAAAAAAB4AAAALNAAAARQAABKwAAAFS"
+    "main_window_geometry": "AdnQywADAAAAAABkAAAAPwAAAyYAAAU6AAAAZAAAAGQAAAMmAAAFOgAAAAEAAAAACgAAAABkAAAAZAAAAyYAAAU6",
+    "video_window_geometry": "AdnQywADAAAAAAMwAAAAPwAABQ8AAAFxAAADMAAAAGQAAAUPAAABcQAAAAEAAAAACgAAAAMwAAAAZAAABQ8AAAFx"
 }
